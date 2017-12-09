@@ -1,12 +1,9 @@
 <?php
 
 use App\Recipe;
-use Laravel\Lumen\Testing\DatabaseMigrations;
 
-class FetchRecipesTest extends TestCase
+class FetchRecipeTest extends TestCase
 {
-    use DatabaseMigrations;
-
     /** @test */
     public function fetch_a_recipe_by_id()
     {

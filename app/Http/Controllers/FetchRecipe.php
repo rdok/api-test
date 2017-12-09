@@ -22,9 +22,4 @@ class FetchRecipe extends Controller
 
         return $this->respond($recipe);
     }
-
-    private function respond($recipe)
-    {
-        return json_encode($recipe);
-    }
 }
