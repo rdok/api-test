@@ -4,4 +4,6 @@
 
 $router->get('recipe[/{id}]', ['uses' => 'FetchRecipe']);
 
+$router->patch('recipe/{id}', ['uses' => 'UpdateRecipe']);
+
 $router->post('recipe', ['uses' => 'StoreRecipe']);
