@@ -18,17 +18,12 @@ class FetchRecipeTest extends TestCase
     }
 
     /** @test */
-    public function fetch_all_recipes_for_a_specific_cuisine()
+    public function throw_error_when_id_is_invalid()
     {
-        /** @var Recipe $recipes */
-        $recipes = factory(Recipe::class, 2)->create([
-            'recipe_cuisine' => $cuisine = 'italian'
+        $uri = '/recipe/invalid';
+
+        $this->json('GET', $uri)->seeJsonContains([
+            'message' => 'The id is invalid.'
         ]);
-
-        $uri = '/recipe?cuisine=' . $cuisine;
-
-        $this->json('GET', $uri)
-            ->seeJsonContains(array_except($recipes[0]->toArray(), 'id'))
-            ->seeJsonContains(array_except($recipes[1]->toArray(), 'id'));
     }
 }

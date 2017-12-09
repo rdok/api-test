@@ -15,6 +15,7 @@ for APIs. [See](https://lumen.laravel.com/docs/5.5/releases#5.2.0)
 ## Catering
 > Explain how your solution would cater for different API consumers that
 require different recipe data e.g. a mobile app and the front-end of a website.
+
     - If by different data, we mean transformed data, then the relevant queries
     may specify this, by a query parameter. E.g. ?medium=smartphone. Then the
     API would transform the data accordingly.

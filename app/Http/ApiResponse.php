@@ -56,10 +56,10 @@ trait ApiResponse
         return $this;
     }
 
-    public function respondUnprocessableEntity($messages)
+    public function respondUnprocessableEntity($message)
     {
         return $this->setStatusCode(422)
-            ->responseWithValidationErrors($messages);
+            ->responseWithValidationErrors($message);
 
     }
 
