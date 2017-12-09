@@ -18,4 +18,16 @@ class StoreRecipeTest extends TestCase
 
         $this->seeInDatabase('recipes', $recipe);
     }
+
+    /** @test */
+    public function throw_error_when_data_are_invalid()
+    {
+        $uri = '/recipe';
+
+        $this->json('POST', $uri, [])
+            ->seeJsonContains(['box_type' => [
+                'The box type field is required.'
+            ]])
+            ->seeJsonContains(['title' => ['The title field is required.']]);
+    }
 }

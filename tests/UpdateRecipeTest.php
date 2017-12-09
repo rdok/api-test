@@ -43,4 +43,36 @@ class UpdateRecipeTest extends TestCase
         $this->json('PATCH', $uri, $newRecipe)
             ->seeJsonContains(['message' => 'The id is invalid.']);
     }
+
+    /** @test */
+    public function throw_error_when_data_are_missing()
+    {
+        $recipe = factory(Recipe::class)->create();
+
+        $invalidRecipe = [];
+
+        $uri = '/recipe/' . $recipe->id;
+
+        $this->json('PATCH', $uri, $invalidRecipe)
+            ->seeJsonContains(['box_type' => [
+                'The box type field is required.'
+            ]])
+            ->seeJsonContains(['title' => ['The title field is required.']]);
+    }
+
+    /** @test */
+    public function throw_error_when_data_are_invalid()
+    {
+        $recipe = factory(Recipe::class)->create();
+
+        $invalidRecipe = [];
+
+        $uri = '/recipe/' . $recipe->id;
+
+        $this->json('PATCH', $uri, $invalidRecipe)
+            ->seeJsonContains(['box_type' => [
+                'The box type field is required.'
+            ]])
+            ->seeJsonContains(['title' => ['The title field is required.']]);
+    }
 }
