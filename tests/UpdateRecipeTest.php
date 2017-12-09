@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Requests\StoreOrUpdateRecipeRequest;
 use App\Recipe;
+use Illuminate\Support\Str;
 
 /**
  * @author Rizart Dokollari <r.dokollari@gmail.com>
@@ -22,6 +24,23 @@ class UpdateRecipeTest extends TestCase
         $this->json('PATCH', $uri, $newRecipe)
             ->seeJsonContains(['message' => 'Request processed successfully.']);
 
-        $this->seeInDatabase('recipes', $newRecipe);
+        $expectedData = array_only(
+            $newRecipe, array_keys(StoreOrUpdateRecipeRequest::rules())
+        );
+
+        $expectedData['slug'] = Str::slug($newRecipe['title']);
+
+        $this->seeInDatabase('recipes', $expectedData);
+    }
+
+    /** @test */
+    public function throw_error_when_id_is_invalid()
+    {
+        $uri = '/recipe/invalid-id';
+
+        $newRecipe = factory(Recipe::class)->make()->toArray();
+
+        $this->json('PATCH', $uri, $newRecipe)
+            ->seeJsonContains(['message' => 'The id is invalid.']);
     }
 }

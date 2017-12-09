@@ -24,7 +24,7 @@ class CreateRecipesTable extends Migration
             $table->string('bulletpoint2')->nullable();
             $table->string('bulletpoint3')->nullable();
             $table->string('recipe_diet_type_id');
-            $table->string('season');
+            $table->string('season')->nullable();
             $table->string('base')->nullable();
             $table->string('protein_source');
             $table->unsignedInteger('preparation_time_minutes');

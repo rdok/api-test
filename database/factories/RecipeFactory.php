@@ -8,7 +8,7 @@ use Faker\Generator;
 $factory->define(Recipe::class, function (Generator $faker) {
     return [
         'box_type' => $faker->word,
-        'title' => $faker->word,
+        'title' => $faker->sentence,
         'slug' => $faker->unique()->slug,
         'marketing_description' => $faker->sentence,
         'calories_kcal' => (string)$faker->numberBetween(0, 5000),
@@ -23,6 +23,6 @@ $factory->define(Recipe::class, function (Generator $faker) {
         'equipment_needed' => $faker->word,
         'origin_country' => $faker->word,
         'recipe_cuisine' => $faker->word,
-        'gousto_reference' => $faker->word,
+        'gousto_reference' => (string)$faker->numberBetween(0, 100),
     ];
 });
