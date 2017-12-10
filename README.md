@@ -16,15 +16,15 @@ for APIs. [See](https://lumen.laravel.com/docs/5.5/releases#5.2.0)
 > Explain how your solution would cater for different API consumers that
 require different recipe data e.g. a mobile app and the front-end of a website.
 
-    - If by different data, we mean transformed data, then the relevant queries
-    may specify this, by a query parameter. E.g. ?medium=smartphone. Then the
-    API would transform the data accordingly.
-    - However, for different data, we may also mean different recipe operations.
-     E.g. for smartphones needing to in a single query, call 3 API endpoints.
-     Then this API would have to be used by an API Gateway (and the codebase
-     distributed to microservices), in order to provide said operations. But, my
-     experience with microservices & API gateways is minimal. As such I decided
-     to follow this monolothic approach.
+- If by different data, we mean transformed data, then the relevant queries
+may specify this, by a query parameter. E.g. ?medium=smartphone. Then the
+API would transform the data accordingly.
+- However, for different data, we may also mean different recipe operations.
+ E.g. for smartphones needing to in a single query, call 3 API endpoints.
+ Then this API would have to be used by an API Gateway (and the codebase
+ distributed to microservices), in order to provide said operations. But, my
+ experience with microservices & API gateways is minimal. As such I decided
+ to follow this monolothic approach.
 
 ## Etc
 > Anything else you think is relevant to your solution
