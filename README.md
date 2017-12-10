@@ -2,10 +2,14 @@
 
 ## Preparations
 > How to use your solution
+### Remotely
+API docs @ http://138.68.164.35/
+
+### Locally
 - `git clone git@github.com:rdok/api-test.git`
 - `echo '192.168.10.10 api.test' | sudo tee --append /etc/hosts`
 - `cd api-test; vagrant up;`
-- Open URL: http://api.test
+- API docs @ http://api.test
 
 ## Framework: Lumen
 > Your reasons for your choice of web application framework
