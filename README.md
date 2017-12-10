@@ -22,8 +22,10 @@ for APIs. [See](https://lumen.laravel.com/docs/5.5/releases#5.2.0)
 require different recipe data e.g. a mobile app and the front-end of a website.
 
 - If by different data, we mean transformed data, then the relevant queries
-may specify this, by a query parameter. E.g. ?medium=smartphone. Then the
-API would transform the data accordingly.
+may specify this, by a query parameter. For example
+[/recipe/1?medium=smartphone](http://138.68.164.35/recipe/1?medium=smartphone)
+filters and transformers the relevant API endpoint.
+
 - However, for different data, we may also mean different recipe operations.
  E.g. for smartphones needing to in a single query, call 3 API endpoints.
  Then this API would have to be used by an API Gateway (and the codebase

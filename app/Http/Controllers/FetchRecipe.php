@@ -2,14 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Acme\Recipe\RecipeTransformer;
+use Illuminate\Http\Request;
+
 class FetchRecipe extends Controller
 {
-    public function __invoke($id)
+    private $recipeTransformer;
+
+    public function __construct(RecipeTransformer $recipeTransformer)
+    {
+        $this->recipeTransformer = $recipeTransformer;
+    }
+    public function __invoke($id, Request $request)
     {
         $recipe = app('db')->table('recipes')->where('id', $id)->first();
 
         if (empty($recipe)) {
             return $this->respondUnprocessableEntity('The id is invalid.');
+        }
+
+        if ('smartphone' == $request->get('medium')) {
+            $recipe = $this->recipeTransformer->transform($recipe);
         }
 
         return $this->respond($recipe);
