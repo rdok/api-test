@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreOrUpdateRecipeRequest;
+use App\Recipe;
 use Illuminate\Http\Request;
 
 class StoreRecipe extends Controller
 {
     public function __invoke(Request $request)
     {
-        $this->validate($request, $rules = StoreOrUpdateRecipeRequest::rules());
-
-        app('db')->table('recipes')->insert($request->all());
+        try {
+            Recipe::updateOrStore($request->all());
+        } catch (\Exception $e) {
+            return $this->respondWithError($e->getMessage());
+        }
 
         return $this->respondWithSuccess();
     }
+
     /**
      * @SWG\Post(
      *  path="/recipe",

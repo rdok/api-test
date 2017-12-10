@@ -8,11 +8,12 @@ use Illuminate\Http\Request;
  * @author Rizart Dokollari <r.dokollari@gmail.com>
  * @since 12/9/17
  */
-class StoreOrUpdateRecipeRequest extends Request
+class UpdateOrStoreRecipeRequest extends Request
 {
     public static function rules()
     {
         return [
+            'id' => 'integer|exists:recipes,id',
             'box_type' => 'required|string',
             'title' => 'required|string',
             'short_title' => 'nullable',

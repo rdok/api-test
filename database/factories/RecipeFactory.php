@@ -1,15 +1,19 @@
 <?php
 
 use App\Recipe;
+use Carbon\Carbon;
 use Faker\Generator;
+use Illuminate\Support\Str;
 
 /** @var $factory \Illuminate\Database\Eloquent\Factory */
 
 $factory->define(Recipe::class, function (Generator $faker) {
     return [
+        'created_at' => $timestamp = $faker->dateTime()->format('Y-m-d H:i:s'),
+        'updated_at' => $timestamp,
         'box_type' => $faker->word,
-        'title' => $faker->sentence,
-        'slug' => $faker->unique()->slug,
+        'title' => $title = $faker->sentence,
+        'slug' => Str::slug($title),
         'marketing_description' => $faker->sentence,
         'calories_kcal' => (string)$faker->numberBetween(0, 5000),
         'protein_grams' => (string)$faker->numberBetween(0, 5000),
