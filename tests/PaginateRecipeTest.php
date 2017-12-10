@@ -27,7 +27,7 @@ class PaginateRecipeTest extends TestCase
     public function throw_error_when_cuisine_is_missing()
     {
         $this->json('GET', '/recipe')->seeJsonContains([
-            'cuisine' => ['The cuisine field is required.']
+            'message' => 'The cuisine is missing or invalid.'
         ]);
     }
 
@@ -37,7 +37,7 @@ class PaginateRecipeTest extends TestCase
         $uri = '/recipe?' . http_build_query(['cuisine' => 'invalid']);
 
         $this->json('GET', $uri)->seeJsonContains([
-            'cuisine' => ['The selected cuisine is invalid.']
+            'message' => 'The cuisine is missing or invalid.'
         ]);
     }
 }

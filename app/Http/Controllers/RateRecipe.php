@@ -31,4 +31,32 @@ class RateRecipe extends Controller
 
         return $this->respondWithSuccess();
     }
+    /**
+     * @SWG\Post(
+     *  path="/recipe/{recipeId}/{rateValue}",
+     *  summary="Rate a recipe.",
+     *  produces={"application/json"},
+     *   @SWG\Parameter(
+     *    description="ID of recipe to rate.",
+     *    in="path",
+     *    name="recipeId",
+     *    required=true,
+     *    type="integer",
+     *    format="int64"
+     *   ),
+     *   @SWG\Parameter(
+     *    description="The value of rating.",
+     *    in="path",
+     *    name="rateValue",
+     *    required=true,
+     *    type="integer",
+     *    minimum="1",
+     *    maximum="5",
+     *    format="int64"
+     *   ),
+     *  @SWG\Response(response="200", description="successful operation"),
+     *  @swg\response(response="422", description="Invalid data."),
+     *  produces={"application/json"},
+     * )
+     */
 }
