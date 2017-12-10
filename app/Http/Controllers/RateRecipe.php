@@ -33,7 +33,7 @@ class RateRecipe extends Controller
     }
     /**
      * @SWG\Post(
-     *  path="/recipe/{recipeId}/{rateValue}",
+     *  path="/rate/{recipeId}/{rateValue}",
      *  summary="Rate a recipe.",
      *  produces={"application/json"},
      *   @SWG\Parameter(

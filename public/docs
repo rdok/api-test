@@ -365,7 +365,7 @@
                 }
             }
         },
-        "/recipe/{recipeId}/{rateValue}": {
+        "/rate/{recipeId}/{rateValue}": {
             "post": {
                 "summary": "Rate a recipe.",
                 "produces": [

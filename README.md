@@ -3,7 +3,7 @@
 ## Preparations
 > How to use your solution
 ### Remotely
-API docs @ http://138.68.164.35/
+- API docs @ http://138.68.164.35/
 
 ### Locally
 - `git clone git@github.com:rdok/api-test.git`
